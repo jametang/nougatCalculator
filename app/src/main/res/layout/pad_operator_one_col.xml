@@ -21,6 +21,7 @@
     style="@style/PadLayoutStyle.Operator"
     android:rowCount="5"
     android:columnCount="1"
+    android:visibility="gone"
     android:background="@color/pad_operator_background_color">
 
     <Button

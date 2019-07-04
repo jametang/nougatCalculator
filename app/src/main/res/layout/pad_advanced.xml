@@ -21,6 +21,7 @@
     style="@style/PadLayoutStyle.Advanced"
     android:rowCount="5"
     android:columnCount="3"
+    android:visibility="gone"
     android:background="@color/pad_advanced_background_color">
 
     <Button
