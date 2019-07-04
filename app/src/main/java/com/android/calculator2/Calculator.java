@@ -199,7 +199,6 @@ public class Calculator extends Activity
     private CalculatorText mFormulaText;
     private CalculatorResult mResultText;
 
-    private ViewPager mPadViewPager;
     private View mDeleteButton;
     private View mClearButton;
     private View mEqualButton;
@@ -235,7 +234,6 @@ public class Calculator extends Activity
         mFormulaText = (CalculatorText) findViewById(R.id.formula);
         mResultText = (CalculatorResult) findViewById(R.id.result);
 
-        mPadViewPager = (ViewPager) findViewById(R.id.pad_pager);
         mDeleteButton = findViewById(R.id.del);
         mClearButton = findViewById(R.id.clr);
         mEqualButton = findViewById(R.id.pad_numeric).findViewById(R.id.eq);
@@ -381,14 +379,9 @@ public class Calculator extends Activity
     @Override
     public void onBackPressed() {
         if (!stopActionMode()) {
-            if (mPadViewPager != null && mPadViewPager.getCurrentItem() != 0) {
-                // Select the previous pad.
-                mPadViewPager.setCurrentItem(mPadViewPager.getCurrentItem() - 1);
-            } else {
-                // If the user is currently looking at the first pad (or the pad is not paged),
-                // allow the system to handle the Back button.
-                super.onBackPressed();
-            }
+            // If the user is currently looking at the first pad (or the pad is not paged),
+            // allow the system to handle the Back button.
+            super.onBackPressed();
         }
     }
 

@@ -15,13 +15,14 @@
   limitations under the License.
   -->
 
-<GridLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/pad_advanced"
     style="@style/PadLayoutStyle.Advanced"
     android:rowCount="5"
     android:columnCount="3"
     android:visibility="gone"
+    tools:visibility="visible"
     android:background="@color/pad_advanced_background_color">
 
     <Button

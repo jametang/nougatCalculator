@@ -15,35 +15,40 @@
   limitations under the License.
   -->
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <include
         layout="@layout/display"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
-    <com.android.calculator2.CalculatorPadViewPager
-        android:id="@+id/pad_pager"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1"
-        android:overScrollMode="never">
+        android:layout_height="match_parent">
+        <include layout="@layout/pad_numeric_left"
+            android:id="@+id/pad_numeric_left"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintEnd_toStartOf="@id/pad_numeric"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+        <include layout="@layout/pad_numeric"
+            android:id="@+id/pad_numeric"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHorizontal_weight="4"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/pad_numeric_left"/>
+    </android.support.constraint.ConstraintLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <include layout="@layout/pad_numeric" />
-            <include layout="@layout/pad_operator_one_col" />
-
-        </LinearLayout>
-
-        <include layout="@layout/pad_advanced" />
-
-    </com.android.calculator2.CalculatorPadViewPager>
+    <include layout="@layout/pad_advanced"/>
 
 </LinearLayout>

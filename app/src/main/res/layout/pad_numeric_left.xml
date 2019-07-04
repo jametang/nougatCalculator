@@ -16,13 +16,10 @@
   -->
 
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/pad_operator"
+    android:id="@+id/pad_numeric_left"
     style="@style/PadLayoutStyle.Operator"
-    android:rowCount="5"
+    android:rowCount="4"
     android:columnCount="1"
-    android:visibility="gone"
-    tools:visibility="visible"
     android:background="@color/pad_operator_background_color">
 
     <Button
@@ -39,9 +36,7 @@
         android:layout_row="0"
         android:layout_column="0"
         android:contentDescription="@string/desc_clr"
-        android:text="@string/clr"
-        android:visibility="gone" />
-
+        android:text="@string/clr" />
 
     <Button
         android:id="@+id/op_div"
@@ -67,12 +62,5 @@
         android:contentDescription="@string/desc_op_sub"
         android:text="@string/op_sub" />
 
-    <Button
-        android:id="@+id/op_add"
-        style="@style/PadButtonStyle.Operator"
-        android:layout_row="4"
-        android:layout_column="0"
-        android:contentDescription="@string/desc_op_add"
-        android:text="@string/op_add" />
 
 </GridLayout>
