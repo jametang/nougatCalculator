@@ -32,7 +32,6 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -42,12 +41,10 @@ import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.view.ViewPager;
-import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
-import android.text.TextUtils;
+import android.transition.TransitionManager;
 import android.util.Property;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
@@ -57,6 +54,7 @@ import android.view.View;
 import android.view.View.OnKeyListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewAnimationUtils;
+import android.view.ViewGroup;
 import android.view.ViewGroupOverlay;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.TextView;
@@ -220,6 +218,11 @@ public class Calculator extends Activity
     // TODO: should probably match this to the error color?
     private ForegroundColorSpan mUnprocessedColorSpan = new ForegroundColorSpan(Color.RED);
 
+    //两种计算模式切换
+    private View mPadNumView;
+    private View mPadNumTopView;
+    private ViewGroup mPadNumRootView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -308,6 +311,9 @@ public class Calculator extends Activity
         //       We probably should.  Details may require care to deal with:
         //         - new display size
         //         - slow recomputation if we've scrolled far.
+        mPadNumRootView = findViewById(R.id.pad_numeric_parent);
+        mPadNumView = findViewById(R.id.pad_numeric);
+        mPadNumTopView = findViewById(R.id.pad_numeric_top);
     }
 
     @Override
@@ -536,6 +542,10 @@ public class Calculator extends Activity
                     mEvaluator.evaluateAndShowResult();
                 }
                 break;
+            case R.id.op_revert_ui:
+                //界面转换
+                revertUI();
+                break;
             default:
                 cancelIfEvaluating(false);
                 addExplicitKeyToExpr(id);
@@ -543,6 +553,20 @@ public class Calculator extends Activity
                 break;
         }
     }
+
+    private boolean mIsSimpleUI = true;
+    private void revertUI() {
+        TransitionManager.beginDelayedTransition(mPadNumRootView);
+        if(mIsSimpleUI){
+            //切换为科学计算界面
+            mPadNumTopView.setVisibility(View.VISIBLE);
+        }else{
+            //切换为简单计算界面
+            mPadNumTopView.setVisibility(View.GONE);
+        }
+        mIsSimpleUI = !mIsSimpleUI;
+    }
+
 
     void redisplayFormula() {
         SpannableStringBuilder formula = mEvaluator.getExpr().toSpannableStringBuilder(this);
