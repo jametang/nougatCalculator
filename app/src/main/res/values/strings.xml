@@ -77,6 +77,7 @@
     <string name="op_sqrt" translatable="false">√</string>
     <!-- Subtraction operator (e.g. "1 - 2"). [CHAR_LIMIT=1] -->
     <string name="op_sub" translatable="false">−</string>
+    <string name="op_multi_invert" translatable="false">1/x</string>
 
     <!-- Abbrev. name of cosine function (e.g. "cos(π)"). [CHAR_LIMIT=4] -->
     <string name="fun_cos" translatable="false">cos</string>

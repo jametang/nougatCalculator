@@ -28,25 +28,27 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <include layout="@layout/pad_numeric_left"
-            android:id="@+id/pad_numeric_left"
+
+        <include layout="@layout/pad_numeric_top"
+            android:id="@+id/pad_numeric_top"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintEnd_toStartOf="@id/pad_numeric"
+            android:visibility="gone"
+            app:layout_constraintVertical_weight="3"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintBottom_toTopOf="@id/pad_numeric"/>
+
         <include layout="@layout/pad_numeric"
             android:id="@+id/pad_numeric"
             android:layout_width="0dp"
+            app:layout_constraintTop_toBottomOf="@id/pad_numeric_top"
             android:layout_height="0dp"
-            app:layout_constraintHorizontal_weight="4"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="4"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/pad_numeric_left"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
     </android.support.constraint.ConstraintLayout>
 
     <include layout="@layout/pad_advanced"/>
