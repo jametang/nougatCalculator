@@ -347,14 +347,14 @@ public class Calculator extends Activity
             }
             mCurrentState = state;
 
-            if (mCurrentState == CalculatorState.RESULT) {
+            /*if (mCurrentState == CalculatorState.RESULT) {
                 // No longer do this for ERROR; allow mistakes to be corrected.
                 mDeleteButton.setVisibility(View.GONE);
                 mClearButton.setVisibility(View.VISIBLE);
             } else {
                 mDeleteButton.setVisibility(View.VISIBLE);
                 mClearButton.setVisibility(View.GONE);
-            }
+            }*/
 
             if (mCurrentState == CalculatorState.ERROR) {
                 final int errorColor = getColor(R.color.calculator_error_color);

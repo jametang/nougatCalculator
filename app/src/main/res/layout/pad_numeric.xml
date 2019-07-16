@@ -47,7 +47,7 @@
         android:text="@string/digit_9" />
     <Button
         android:id="@+id/del"
-        style="@style/PadButtonStyle.Operator.Text"
+        style="@style/PadButtonStyle.Operator"
         android:layout_row="0"
         android:layout_column="3"
         android:contentDescription="@string/desc_del"
@@ -55,7 +55,7 @@
 
     <Button
         android:id="@+id/clr"
-        style="@style/PadButtonStyle.Operator.Text"
+        style="@style/PadButtonStyle.Operator"
         android:layout_row="0"
         android:layout_column="4"
         android:contentDescription="@string/desc_clr"
