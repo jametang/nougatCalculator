@@ -29,13 +29,13 @@
         android:id="@+id/toggle_inv"
         android:layout_row="0"
         android:layout_column="0"
-        style="@style/PadButtonStyle.Numeric"
+        style="@style/PadButtonStyle.Numeric.Small"
         android:contentDescription="@string/desc_inv_off"
         android:text="@string/inv" />
 
     <Button
         android:id="@+id/toggle_mode"
-        style="@style/PadButtonStyle.Numeric"
+        style="@style/PadButtonStyle.Numeric.Small"
         android:layout_row="0"
         android:layout_column="1"
         android:contentDescription="@string/desc_switch_deg"
@@ -43,7 +43,7 @@
 
     <Button
         android:id="@+id/fun_sin"
-        style="@style/PadButtonStyle.Numeric"
+        style="@style/PadButtonStyle.Numeric.Small"
         android:layout_row="0"
         android:layout_column="2"
         android:contentDescription="@string/desc_fun_sin"
@@ -51,7 +51,7 @@
 
     <Button
         android:id="@+id/fun_arcsin"
-        style="@style/PadButtonStyle.Numeric"
+        style="@style/PadButtonStyle.Numeric.Small"
         android:layout_row="0"
         android:layout_column="2"
         android:contentDescription="@string/desc_fun_arcsin"
@@ -61,7 +61,7 @@
 
     <Button
         android:id="@+id/fun_cos"
-        style="@style/PadButtonStyle.Numeric"
+        style="@style/PadButtonStyle.Numeric.Small"
         android:layout_row="0"
         android:layout_column="3"
         android:contentDescription="@string/desc_fun_cos"
@@ -69,7 +69,7 @@
 
     <Button
         android:id="@+id/fun_arccos"
-        style="@style/PadButtonStyle.Numeric"
+        style="@style/PadButtonStyle.Numeric.Small"
         android:layout_row="0"
         android:layout_column="3"
         android:contentDescription="@string/desc_fun_arccos"
@@ -79,7 +79,7 @@
 
     <Button
         android:id="@+id/fun_tan"
-        style="@style/PadButtonStyle.Numeric"
+        style="@style/PadButtonStyle.Numeric.Small"
         android:layout_row="0"
         android:layout_column="4"
         android:contentDescription="@string/desc_fun_tan"
@@ -87,7 +87,7 @@
 
     <Button
         android:id="@+id/fun_arctan"
-        style="@style/PadButtonStyle.Numeric"
+        style="@style/PadButtonStyle.Numeric.Small"
         android:layout_row="0"
         android:layout_column="4"
         android:contentDescription="@string/desc_fun_arctan"
@@ -97,7 +97,7 @@
 
     <Button
         android:id="@+id/op_multi_invert"
-        style="@style/PadButtonStyle.Numeric"
+        style="@style/PadButtonStyle.Numeric.Small"
         android:layout_row="1"
         android:layout_column="0"
         android:contentDescription="@string/desc_op_pct"
@@ -105,7 +105,7 @@
 
     <Button
         android:id="@+id/fun_ln"
-        style="@style/PadButtonStyle.Numeric"
+        style="@style/PadButtonStyle.Numeric.Small"
         android:layout_row="1"
         android:layout_column="1"
         android:contentDescription="@string/desc_fun_ln"
@@ -113,7 +113,7 @@
 
     <Button
         android:id="@+id/fun_exp"
-        style="@style/PadButtonStyle.Numeric"
+        style="@style/PadButtonStyle.Numeric.Small"
         android:layout_row="1"
         android:layout_column="1"
         android:contentDescription="@string/desc_fun_exp"
@@ -123,7 +123,7 @@
 
     <Button
         android:id="@+id/fun_log"
-        style="@style/PadButtonStyle.Numeric"
+        style="@style/PadButtonStyle.Numeric.Small"
         android:layout_row="1"
         android:layout_column="2"
         android:contentDescription="@string/desc_fun_log"
@@ -131,7 +131,7 @@
 
     <Button
         android:id="@+id/fun_10pow"
-        style="@style/PadButtonStyle.Numeric"
+        style="@style/PadButtonStyle.Numeric.Small"
         android:layout_row="1"
         android:layout_column="2"
         android:contentDescription="@string/desc_fun_10pow"
@@ -141,7 +141,7 @@
 
     <Button
         android:id="@+id/op_fact"
-        style="@style/PadButtonStyle.Numeric"
+        style="@style/PadButtonStyle.Numeric.Small"
         android:layout_row="1"
         android:layout_column="3"
         android:contentDescription="@string/desc_op_fact"
@@ -149,7 +149,7 @@
 
     <Button
         android:id="@+id/op_pow"
-        style="@style/PadButtonStyle.Numeric"
+        style="@style/PadButtonStyle.Numeric.Small"
         android:layout_row="1"
         android:layout_column="4"
         android:contentDescription="@string/desc_op_pow"
@@ -157,7 +157,7 @@
 
     <Button
         android:id="@+id/const_pi"
-        style="@style/PadButtonStyle.Numeric"
+        style="@style/PadButtonStyle.Numeric.Small"
         android:layout_row="2"
         android:layout_column="0"
         android:contentDescription="@string/desc_const_pi"
@@ -165,7 +165,7 @@
 
     <Button
         android:id="@+id/const_e"
-        style="@style/PadButtonStyle.Numeric"
+        style="@style/PadButtonStyle.Numeric.Small"
         android:layout_row="2"
         android:layout_column="1"
         android:contentDescription="@string/desc_const_e"
@@ -173,7 +173,7 @@
 
     <Button
         android:id="@+id/lparen"
-        style="@style/PadButtonStyle.Numeric"
+        style="@style/PadButtonStyle.Numeric.Small"
         android:layout_row="2"
         android:layout_column="2"
         android:contentDescription="@string/desc_lparen"
@@ -181,7 +181,7 @@
 
     <Button
         android:id="@+id/rparen"
-        style="@style/PadButtonStyle.Numeric"
+        style="@style/PadButtonStyle.Numeric.Small"
         android:layout_row="2"
         android:layout_column="3"
         android:contentDescription="@string/desc_rparen"
@@ -189,7 +189,7 @@
 
     <Button
         android:id="@+id/op_sqrt"
-        style="@style/PadButtonStyle.Numeric"
+        style="@style/PadButtonStyle.Numeric.Small"
         android:layout_row="2"
         android:layout_column="4"
         android:contentDescription="@string/desc_op_sqrt"
@@ -197,7 +197,7 @@
 
     <Button
         android:id="@+id/op_sqr"
-        style="@style/PadButtonStyle.Numeric"
+        style="@style/PadButtonStyle.Numeric.Small"
         android:layout_row="2"
         android:layout_column="4"
         android:contentDescription="@string/desc_op_sqr"

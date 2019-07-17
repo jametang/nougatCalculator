@@ -51,6 +51,10 @@
         <item name="android:textSize">32sp</item>
     </style>
 
+    <style name="PadButtonStyle.Numeric.Small">
+        <item name="android:textSize">24sp</item>
+    </style>
+
     <style name="PadButtonStyle.Numeric.Equals">
         <item name="android:visibility">visible</item>
     </style>

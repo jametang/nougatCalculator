@@ -57,6 +57,7 @@ import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.view.ViewGroupOverlay;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
@@ -219,7 +220,7 @@ public class Calculator extends Activity
     private ForegroundColorSpan mUnprocessedColorSpan = new ForegroundColorSpan(Color.RED);
 
     //两种计算模式切换
-    private View mPadNumView;
+    private ViewGroup mPadNumView;
     private View mPadNumTopView;
     private ViewGroup mPadNumRootView;
 
@@ -565,6 +566,25 @@ public class Calculator extends Activity
             mPadNumTopView.setVisibility(View.GONE);
         }
         mIsSimpleUI = !mIsSimpleUI;
+        //改变pad_numeric字体大小
+        changePadNumericSize(mIsSimpleUI);
+    }
+
+    private void changePadNumericSize(boolean mIsSimpleUI) {
+        if(mPadNumView != null) {
+            int childSize = mPadNumView.getChildCount();
+            if (childSize > 0) {
+                float textSize = mIsSimpleUI ? 32f : 24f;
+                for (int i = 0 ; i < childSize ;i++) {
+                    View child = mPadNumView.getChildAt(i);
+                    if (child instanceof Button) {
+                        Button button = (Button) child;
+                        button.setTextSize(textSize);
+                    }
+                }
+            }
+
+        }
     }
 
 
