@@ -118,7 +118,7 @@
     <!-- Equals button (e.g. "1 + 2 = ?"). [CHAR_LIMIT=1] -->
     <string name="eq" translatable="false">=</string>
     <!-- Clear button to clear the currently entered expression. [CHAR_LIMIT=4] -->
-    <string name="clr">clr</string>
+    <string name="clr">C</string>
     <!--
       Announced when all characters are removed from Formula, e.g. after clear. [CHAR_LIMIT=NONE]
       -->
@@ -262,5 +262,7 @@
     <string name="menu_fraction">Answer as fraction</string>
     <!-- Menu option to view the app's open source licenses. [CHAR_LIMIT=40] -->
     <string name="menu_licenses">Open source licenses</string>
+    <string name="mode_rad_show">rad</string>
+    <string name="mode_deg_show">deg</string>
 
 </resources>

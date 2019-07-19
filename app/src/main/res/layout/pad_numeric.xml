@@ -45,13 +45,13 @@
         android:layout_row="0"
         android:layout_column="2"
         android:text="@string/digit_9" />
-    <Button
+    <ImageView
         android:id="@+id/del"
-        style="@style/PadButtonStyle.Operator"
+        style="@style/PadButtonStyle"
+        android:scaleType="center"
         android:layout_row="0"
-        android:layout_column="3"
-        android:contentDescription="@string/desc_del"
-        android:text="@string/del" />
+        android:src="@drawable/ic_backspace_white_36dp"
+        android:layout_column="3" />
 
     <Button
         android:id="@+id/clr"

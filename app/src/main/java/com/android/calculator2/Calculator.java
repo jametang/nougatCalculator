@@ -68,6 +68,7 @@ import android.view.ViewGroup;
 import android.view.ViewGroupOverlay;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
@@ -446,13 +447,13 @@ public class Calculator extends Activity
      */
     private void onModeChanged(boolean degreeMode) {
         if (degreeMode) {
-            mModeView.setText(R.string.mode_deg);
+            mModeView.setText(R.string.mode_deg_show);
             mModeView.setContentDescription(getString(R.string.desc_mode_deg));
 
             mModeToggle.setText(R.string.mode_rad);
             mModeToggle.setContentDescription(getString(R.string.desc_switch_rad));
         } else {
-            mModeView.setText(R.string.mode_rad);
+            mModeView.setText(R.string.mode_rad_show);
             mModeView.setContentDescription(getString(R.string.desc_mode_rad));
 
             mModeToggle.setText(R.string.mode_deg);
@@ -627,6 +628,12 @@ public class Calculator extends Activity
                     if (child instanceof Button) {
                         Button button = (Button) child;
                         button.setTextSize(textSize);
+                    } else if (child instanceof ImageView) {
+                        if (child.getId() == R.id.del) {
+                            ImageView del = (ImageView) child;
+                            del.setImageResource(mIsSimpleUI ?
+                                    R.drawable.ic_backspace_white_36dp : R.drawable.ic_backspace_white_24dp);
+                        }
                     }
                 }
             }
