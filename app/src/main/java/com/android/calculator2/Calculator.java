@@ -39,12 +39,22 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.transition.ChangeBounds;
+import android.transition.ChangeClipBounds;
+import android.transition.ChangeTransform;
+import android.transition.Fade;
+import android.transition.Slide;
+import android.transition.Transition;
 import android.transition.TransitionManager;
+import android.transition.TransitionSet;
+import android.util.Log;
 import android.util.Property;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
@@ -79,6 +89,7 @@ public class Calculator extends Activity
      * Constant for an invalid resource id.
      */
     public static final int INVALID_RES_ID = -1;
+    private static final String TAG = Calculator.class.getSimpleName();
 
     private enum CalculatorState {
         INPUT,          // Result and formula both visible, no evaluation requested,
@@ -557,7 +568,43 @@ public class Calculator extends Activity
 
     private boolean mIsSimpleUI = true;
     private void revertUI() {
-        TransitionManager.beginDelayedTransition(mPadNumRootView);
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            TransitionSet transitionSet = new TransitionSet();
+            Fade fade = new Fade();
+            ChangeBounds changeBounds = new ChangeBounds();
+            Slide slide = new Slide();
+            transitionSet.addTransition(fade)
+                    .addTransition(slide)
+                    .addTransition(changeBounds);
+            transitionSet.addListener(new Transition.TransitionListener() {
+                @Override
+                public void onTransitionStart(Transition transition) {
+                    Log.v(TAG, "onTransitionStart");
+                }
+
+                @Override
+                public void onTransitionEnd(Transition transition) {
+                    Log.v(TAG, "onTransitionEnd");
+
+                }
+
+                @Override
+                public void onTransitionCancel(Transition transition) {
+                    Log.e(TAG, "onTransitionCancel");
+                }
+
+                @Override
+                public void onTransitionPause(Transition transition) {
+                    Log.e(TAG, "onTransitionPause");
+                }
+
+                @Override
+                public void onTransitionResume(Transition transition) {
+                    Log.e(TAG, "onTransitionResume");
+                }
+            });
+            TransitionManager.beginDelayedTransition(mPadNumRootView, transitionSet);
+        }
         if(mIsSimpleUI){
             //切换为科学计算界面
             mPadNumTopView.setVisibility(View.VISIBLE);
