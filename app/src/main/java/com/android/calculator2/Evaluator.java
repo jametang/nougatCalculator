@@ -982,6 +982,8 @@ class Evaluator {
         if (id == R.id.fun_10pow) {
             add10pow();  // Handled as macro expansion.
             return true;
+        } else if(id == R.id.op_multi_invert){
+            return addInvertMulti();
         } else {
             mChangedValue = mChangedValue || !KeyMaps.isBinary(id);
             return mExpr.add(id);
@@ -1093,6 +1095,22 @@ class Evaluator {
         mChangedValue = true;  // For consistency.  Reevaluation is probably not useful.
         mExpr.append(ten);
         mExpr.add(R.id.op_pow);
+    }
+
+    private boolean addInvertMulti() {
+        if (mExpr.isEmpty()) {
+            return false;
+        }else {
+            mExpr.add(R.id.op_pow);
+            CalculatorExpr expr = new CalculatorExpr();
+            expr.add(R.id.lparen);
+            expr.add(R.id.op_sub);
+            expr.add(R.id.digit_1);
+            expr.add(R.id.rparen);
+            mChangedValue = true;
+            mExpr.append(expr);
+            return true;
+        }
     }
 
     /**
