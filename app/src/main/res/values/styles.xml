@@ -34,6 +34,9 @@
     <style name="Theme.Licenses">
         <item name="android:title">@string/menu_licenses</item>
     </style>
+    <style name="Theme.About">
+        <item name="android:title">@string/menu_about_app</item>
+    </style>
 
     <style name="DisplayTextStyle" parent="@android:style/Widget.Material.Light.TextView">
         <item name="android:background">@android:color/transparent</item>

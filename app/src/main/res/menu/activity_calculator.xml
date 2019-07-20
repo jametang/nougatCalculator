@@ -17,13 +17,7 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/menu_leading"
-        android:title="@string/menu_leading" />
-
-    <item android:id="@+id/menu_fraction"
-        android:title="@string/menu_fraction" />
-
-    <item android:id="@+id/menu_licenses"
-        android:title="@string/menu_licenses" />
+    <item android:id="@+id/menu_about_app"
+        android:title="@string/menu_about_app"/>
 
 </menu>

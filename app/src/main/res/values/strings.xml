@@ -264,5 +264,8 @@
     <string name="menu_licenses">Open source licenses</string>
     <string name="mode_rad_show">rad</string>
     <string name="mode_deg_show">deg</string>
+    <string name="menu_about_app">menu_about_app</string>
+    <string name="version_check">version check</string>
+    <string name="latest_version">latest version</string>
 
 </resources>

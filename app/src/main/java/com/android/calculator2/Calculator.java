@@ -656,10 +656,10 @@ public class Calculator extends Activity
     public boolean onLongClick(View view) {
         mCurrentButton = view;
 
-        if (view.getId() == R.id.del) {
-            onClear();
-            return true;
-        }
+//        if (view.getId() == R.id.del) {
+//            onClear();
+//            return true;
+//        }
         return false;
     }
 
@@ -964,12 +964,6 @@ public class Calculator extends Activity
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
 
-        // Show the leading option when displaying a result.
-        menu.findItem(R.id.menu_leading).setVisible(mCurrentState == CalculatorState.RESULT);
-
-        // Show the fraction option when displaying a rational result.
-        menu.findItem(R.id.menu_fraction).setVisible(mCurrentState == CalculatorState.RESULT
-                && mEvaluator.getRational() != null);
 
         return true;
     }
@@ -977,15 +971,9 @@ public class Calculator extends Activity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_leading:
-                displayFull();
-                return true;
-            case R.id.menu_fraction:
-                displayFraction();
-                return true;
-            case R.id.menu_licenses:
-                startActivity(new Intent(this, Licenses.class));
-                return true;
+
+            case R.id.menu_about_app:
+                startActivity(new Intent(this,About.class));
             default:
                 return super.onOptionsItemSelected(item);
         }

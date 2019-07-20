@@ -74,4 +74,7 @@
     <string name="menu_licenses" msgid="1890541368064108592">"开放源代码许可"</string>
     <string name="mode_rad_show">""</string>
     <string name="mode_deg_show">"角度计算"</string>
+    <string name="menu_about_app">"关于应用"</string>
+    <string name="version_check">"检测新版本"</string>
+    <string name="latest_version">"已是最新版本"</string>
 </resources>
