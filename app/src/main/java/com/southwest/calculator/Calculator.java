@@ -23,7 +23,7 @@
 //       more useful text version in a separate window.  It's not clear
 //       this is worth the added (code and user) complexity.
 
-package com.android.calculator2;
+package com.southwest.calculator;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
@@ -42,13 +42,10 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.transition.ChangeBounds;
-import android.transition.ChangeClipBounds;
-import android.transition.ChangeTransform;
 import android.transition.Fade;
 import android.transition.Slide;
 import android.transition.Transition;
@@ -72,7 +69,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
-import com.android.calculator2.CalculatorText.OnTextSizeChangeListener;
+import com.southwest.calculator.R;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -83,7 +80,7 @@ import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 
 public class Calculator extends Activity
-        implements OnTextSizeChangeListener, OnLongClickListener, CalculatorText.OnPasteListener,
+        implements CalculatorText.OnTextSizeChangeListener, OnLongClickListener, CalculatorText.OnPasteListener,
         AlertDialogFragment.OnClickListener {
 
     /**

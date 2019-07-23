@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.calculator2;
+package com.southwest.calculator;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -24,6 +24,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.southwest.calculator.R;
 
 public class CalculatorPadViewPager extends ViewPager {
 

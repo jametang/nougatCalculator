@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.calculator2;
+package com.southwest.calculator;
 
 import android.content.res.Resources;
 import android.content.Context;
@@ -22,6 +22,8 @@ import android.app.Activity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import com.southwest.calculator.R;
 
 import java.text.DecimalFormatSymbols;
 import java.util.HashMap;

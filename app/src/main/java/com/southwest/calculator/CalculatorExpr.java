@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-package com.android.calculator2;
+package com.southwest.calculator;
 
 
+import com.southwest.calculator.R;
 import com.hp.creals.CR;
 import com.hp.creals.UnaryCRFunction;
 
@@ -25,7 +26,6 @@ import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.TtsSpan;
-import android.text.style.TtsSpan.TextBuilder;
 import android.util.Log;
 
 import java.math.BigInteger;

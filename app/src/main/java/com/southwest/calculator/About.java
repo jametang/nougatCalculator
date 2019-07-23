@@ -1,4 +1,4 @@
-package com.android.calculator2;
+package com.southwest.calculator;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.southwest.calculator.R;
 
 public class About extends Activity {
 

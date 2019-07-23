@@ -1,4 +1,4 @@
-package com.android.calculator2;
+package com.southwest.calculator;
 
 import android.app.Activity;
 import android.os.Bundle;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.calculator2;
+package com.southwest.calculator;
 
 import android.content.Context;
 import android.graphics.Paint;

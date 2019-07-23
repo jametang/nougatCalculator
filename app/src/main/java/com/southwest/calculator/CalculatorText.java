@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.calculator2;
+package com.southwest.calculator;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -32,6 +32,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import com.southwest.calculator.R;
 
 /**
  * TextView adapted for Calculator display.

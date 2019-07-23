@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.calculator2;
+package com.southwest.calculator;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -26,6 +26,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.widget.TextView;
+
+import com.southwest.calculator.R;
 
 /**
  * Display a message with a dismiss putton, and optionally a second button.

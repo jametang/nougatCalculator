@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.calculator2;
+package com.southwest.calculator;
 
 import android.content.ClipData;
 import android.content.ClipDescription;
@@ -38,6 +38,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.OverScroller;
 import android.widget.Toast;
+
 
 // A text widget that is "infinitely" scrollable to the right,
 // and obtains the text to display via a callback to Logic.

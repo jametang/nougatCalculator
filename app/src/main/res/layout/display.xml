@@ -38,7 +38,7 @@
 
     </Toolbar>
 
-    <com.android.calculator2.CalculatorText
+    <com.southwest.calculator.CalculatorText
         android:id="@+id/formula"
         style="@style/DisplayTextStyle.Formula"
         android:layout_width="match_parent"
@@ -51,7 +51,7 @@
         android:textColor="@color/display_formula_text_color"
         android:textIsSelectable="false" />
 
-    <com.android.calculator2.CalculatorResult
+    <com.southwest.calculator.CalculatorResult
         android:id="@+id/result"
         style="@style/DisplayTextStyle.Result"
         android:layout_width="match_parent"

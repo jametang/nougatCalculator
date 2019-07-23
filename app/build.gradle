@@ -5,11 +5,9 @@ android {
     buildToolsVersion "28.0.3"
 
     defaultConfig {
-        applicationId "com.android.calculator2"
+        applicationId "com.southwest.calculator"
         minSdkVersion 16
         targetSdkVersion 28
-        testApplicationId "com.android.calculator2.tests"
-        testInstrumentationRunner "android.test.InstrumentationTestRunner"
 
         ndk {
             //根据需要 自行选择添加的对应cpu类型的.so库。
