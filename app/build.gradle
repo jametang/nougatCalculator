@@ -8,6 +8,8 @@ android {
         applicationId "com.southwest.calculator"
         minSdkVersion 16
         targetSdkVersion 28
+        versionCode="1"
+        versionName="1.0.0"
 
         ndk {
             //根据需要 自行选择添加的对应cpu类型的.so库。
@@ -15,8 +17,8 @@ android {
             // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
         }
         manifestPlaceholders = [
-                MTA_APPKEY:"注册应用的appkey",
-                MTA_CHANNEL:"渠道名称"
+                MTA_APPKEY:"AB93AJRD2L9V",
+                MTA_CHANNEL:"豌豆荚"
         ]
     }
 
