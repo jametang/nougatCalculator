@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.southwest.calculator.R;
+import com.tencent.bugly.Bugly;
+import com.tencent.bugly.beta.Beta;
 
 public class About extends Activity {
 
@@ -27,7 +29,7 @@ public class About extends Activity {
         findViewById(R.id.btn_update).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(About.this,R.string.latest_version,Toast.LENGTH_SHORT).show();
+                Beta.checkUpgrade();
             }
         });
         TextView versionTv = findViewById(R.id.tv_version);
