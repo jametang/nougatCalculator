@@ -16,11 +16,13 @@
 
 package com.southwest.calculator;
 
+import android.annotation.TargetApi;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.graphics.Rect;
+import android.os.Build;
 import android.text.Layout;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -159,8 +161,11 @@ public class CalculatorResult extends AlignedTextView {
                 @Override
                 public void onLongPress(MotionEvent e) {
                     if (mValid) {
-                        mActionMode = startActionMode(mCopyActionModeCallback,
-                                ActionMode.TYPE_FLOATING);
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            initActionModelCallback();
+                            mActionMode = startActionMode(mCopyActionModeCallback,
+                                    ActionMode.TYPE_FLOATING);
+                        }
                     }
                 }
             });
@@ -168,7 +173,7 @@ public class CalculatorResult extends AlignedTextView {
         setHorizontallyScrolling(false);  // do it ourselves
         setCursorVisible(false);
         mExponentColorSpan = new ForegroundColorSpan(
-                context.getColor(R.color.display_result_exponent_text_color));
+                context.getResources().getColor(R.color.display_result_exponent_text_color));
 
         // Copy ActionMode is triggered explicitly, not through
         // setCustomSelectionActionModeCallback.
@@ -551,65 +556,72 @@ public class CalculatorResult extends AlignedTextView {
 
     // Copy support:
 
-    private ActionMode.Callback2 mCopyActionModeCallback = new ActionMode.Callback2() {
+    @TargetApi(Build.VERSION_CODES.M)
+    private void initActionModelCallback(){
+        if(mCopyActionModeCallback == null) {
+                mCopyActionModeCallback = new ActionMode.Callback2() {
 
-        private BackgroundColorSpan mHighlightSpan;
+                    private BackgroundColorSpan mHighlightSpan;
 
-        private void highlightResult() {
-            final Spannable text = (Spannable) getText();
-            mHighlightSpan = new BackgroundColorSpan(getHighlightColor());
-            text.setSpan(mHighlightSpan, 0, text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    private void highlightResult() {
+                        final Spannable text = (Spannable) getText();
+                        mHighlightSpan = new BackgroundColorSpan(getHighlightColor());
+                        text.setSpan(mHighlightSpan, 0, text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    }
+
+                    private void unhighlightResult() {
+                        final Spannable text = (Spannable) getText();
+                        text.removeSpan(mHighlightSpan);
+                    }
+
+                    @Override
+                    public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                        MenuInflater inflater = mode.getMenuInflater();
+                        inflater.inflate(R.menu.copy, menu);
+                        highlightResult();
+                        return true;
+                    }
+
+                    @Override
+                    public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                        return false; // Return false if nothing is done
+                    }
+
+                    @Override
+                    public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.menu_copy:
+                                copyContent();
+                                mode.finish();
+                                return true;
+                            default:
+                                return false;
+                        }
+                    }
+
+                    @Override
+                    public void onDestroyActionMode(ActionMode mode) {
+                        unhighlightResult();
+                        mActionMode = null;
+                    }
+
+                    @Override
+                    public void onGetContentRect(ActionMode mode, View view, Rect outRect) {
+                        super.onGetContentRect(mode, view, outRect);
+                        outRect.left += getPaddingLeft();
+                        outRect.top += getPaddingTop();
+                        outRect.right -= getPaddingRight();
+                        outRect.bottom -= getPaddingBottom();
+                        final int width = (int) Layout.getDesiredWidth(getText(), getPaint());
+                        if (width < outRect.width()) {
+                            outRect.left = outRect.right - width;
+                        }
+                    }
+                };
         }
+    }
 
-        private void unhighlightResult() {
-            final Spannable text = (Spannable) getText();
-            text.removeSpan(mHighlightSpan);
-        }
-
-        @Override
-        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-            MenuInflater inflater = mode.getMenuInflater();
-            inflater.inflate(R.menu.copy, menu);
-            highlightResult();
-            return true;
-        }
-
-        @Override
-        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-            return false; // Return false if nothing is done
-        }
-
-        @Override
-        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-            switch (item.getItemId()) {
-            case R.id.menu_copy:
-                copyContent();
-                mode.finish();
-                return true;
-            default:
-                return false;
-            }
-        }
-
-        @Override
-        public void onDestroyActionMode(ActionMode mode) {
-            unhighlightResult();
-            mActionMode = null;
-        }
-
-        @Override
-        public void onGetContentRect(ActionMode mode, View view, Rect outRect) {
-            super.onGetContentRect(mode, view, outRect);
-            outRect.left += getPaddingLeft();
-            outRect.top += getPaddingTop();
-            outRect.right -= getPaddingRight();
-            outRect.bottom -= getPaddingBottom();
-            final int width = (int) Layout.getDesiredWidth(getText(), getPaint());
-            if (width < outRect.width()) {
-                outRect.left = outRect.right - width;
-            }
-        }
-    };
+    private ActionMode.Callback2 mCopyActionModeCallback ;
 
     public boolean stopActionMode() {
         if (mActionMode != null) {

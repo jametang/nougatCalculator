@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.southwest.calculator"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode="1"
         versionName="1.0.0"
@@ -22,11 +22,32 @@ android {
         ]
     }
 
+    //配置签名信息
+    signingConfigs {
+        config {
+            storeFile file("/Users/tangli/Desktop/calculator.jks")
+            storePassword "12345678"
+            keyAlias "key0"
+            keyPassword "12345678"
+        }
+    }
+
+
+
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.config //使用签名
         }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
     }
 }
 

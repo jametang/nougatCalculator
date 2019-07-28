@@ -16,11 +16,13 @@
 
 package com.southwest.calculator;
 
+import android.annotation.TargetApi;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
+import android.os.Build;
 import android.text.Layout;
 import android.text.TextPaint;
 import android.text.method.ScrollingMovementMethod;
@@ -40,52 +42,9 @@ import com.southwest.calculator.R;
  */
 public class CalculatorText extends AlignedTextView implements View.OnLongClickListener {
 
-    private final ActionMode.Callback2 mPasteActionModeCallback = new ActionMode.Callback2() {
 
-        @Override
-        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-            if (item.getItemId() == R.id.menu_paste) {
-                paste();
-                mode.finish();
-                return true;
-            }
-            return false;
-        }
 
-        @Override
-        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-            final ClipboardManager clipboard = (ClipboardManager) getContext()
-                    .getSystemService(Context.CLIPBOARD_SERVICE);
-            if (clipboard.hasPrimaryClip()) {
-                bringPointIntoView(length());
-                MenuInflater inflater = mode.getMenuInflater();
-                inflater.inflate(R.menu.paste, menu);
-                return true;
-            }
-            // Prevents the selection action mode on double tap.
-            return false;
-        }
-
-        @Override
-        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-            return false;
-        }
-
-        @Override
-        public void onDestroyActionMode(ActionMode mode) {
-            mActionMode = null;
-        }
-
-        @Override
-        public void onGetContentRect(ActionMode mode, View view, Rect outRect) {
-            super.onGetContentRect(mode, view, outRect);
-            outRect.top += getTotalPaddingTop();
-            outRect.right -= getTotalPaddingRight();
-            outRect.bottom -= getTotalPaddingBottom();
-            // Encourage menu positioning towards the right, possibly over formula.
-            outRect.left = outRect.right;
-        }
-    };
+    private  ActionMode.Callback2 mPasteActionModeCallback ;
 
     // Temporary paint for use in layout methods.
     private final TextPaint mTempPaint = new TextPaint();
@@ -134,8 +93,63 @@ public class CalculatorText extends AlignedTextView implements View.OnLongClickL
 
     @Override
     public boolean onLongClick(View v) {
-        mActionMode = startActionMode(mPasteActionModeCallback, ActionMode.TYPE_FLOATING);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            initActionModelCallback();
+            mActionMode = startActionMode(mPasteActionModeCallback, ActionMode.TYPE_FLOATING);
+        }
         return true;
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    private void initActionModelCallback() {
+        if(mPasteActionModeCallback == null) {
+            mPasteActionModeCallback = new ActionMode.Callback2() {
+
+                @Override
+                public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                    if (item.getItemId() == R.id.menu_paste) {
+                        paste();
+                        mode.finish();
+                        return true;
+                    }
+                    return false;
+                }
+
+                @Override
+                public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                    final ClipboardManager clipboard = (ClipboardManager) getContext()
+                            .getSystemService(Context.CLIPBOARD_SERVICE);
+                    if (clipboard.hasPrimaryClip()) {
+                        bringPointIntoView(length());
+                        MenuInflater inflater = mode.getMenuInflater();
+                        inflater.inflate(R.menu.paste, menu);
+                        return true;
+                    }
+                    // Prevents the selection action mode on double tap.
+                    return false;
+                }
+
+                @Override
+                public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                    return false;
+                }
+
+                @Override
+                public void onDestroyActionMode(ActionMode mode) {
+                    mActionMode = null;
+                }
+
+                @Override
+                public void onGetContentRect(ActionMode mode, View view, Rect outRect) {
+                    super.onGetContentRect(mode, view, outRect);
+                    outRect.top += getTotalPaddingTop();
+                    outRect.right -= getTotalPaddingRight();
+                    outRect.bottom -= getTotalPaddingBottom();
+                    // Encourage menu positioning towards the right, possibly over formula.
+                    outRect.left = outRect.right;
+                }
+            };
+        }
     }
 
     @Override

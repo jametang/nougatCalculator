@@ -78,12 +78,11 @@ public class AlertDialogFragment extends DialogFragment implements DialogInterfa
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final Bundle args = getArguments() == null ? Bundle.EMPTY : getArguments();
-        final Context context = getContext();
-        final LayoutInflater inflater = LayoutInflater.from(context);
+        final LayoutInflater inflater = LayoutInflater.from(getActivity());
         final TextView textView = (TextView) inflater.inflate(R.layout.dialog_message,
                 null /* root */);
         textView.setText(args.getCharSequence(KEY_MESSAGE));
-        final AlertDialog.Builder builder = new AlertDialog.Builder(context)
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
                 .setView(textView)
                 .setNegativeButton(args.getCharSequence(KEY_BUTTON_NEGATIVE), null /* listener */);
         final CharSequence positiveButtonLabel = args.getCharSequence(KEY_BUTTON_POSITIVE);

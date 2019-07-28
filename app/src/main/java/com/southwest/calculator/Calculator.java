@@ -367,14 +367,14 @@ public class Calculator extends Activity
             }*/
 
             if (mCurrentState == CalculatorState.ERROR) {
-                final int errorColor = getColor(R.color.calculator_error_color);
+                final int errorColor = getResources().getColor(R.color.calculator_error_color);
                 mFormulaText.setTextColor(errorColor);
                 mResultText.setTextColor(errorColor);
                 getWindow().setStatusBarColor(errorColor);
             } else if (mCurrentState != CalculatorState.RESULT) {
-                mFormulaText.setTextColor(getColor(R.color.display_formula_text_color));
-                mResultText.setTextColor(getColor(R.color.display_result_text_color));
-                getWindow().setStatusBarColor(getColor(R.color.calculator_accent_color));
+                mFormulaText.setTextColor(getResources().getColor(R.color.display_formula_text_color));
+                mResultText.setTextColor(getResources().getColor(R.color.display_result_text_color));
+                getWindow().setStatusBarColor(getResources().getColor(R.color.calculator_accent_color));
             }
 
             invalidateOptionsMenu();
